@@ -1,0 +1,22 @@
+add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
+/** 
+ * https://developer.wordpress.org/reference/hooks/excerpt_length/
+ * Change the length of site default excerpt.
+ *
+ * @param int $length The number of words. Default 55.
+ * @return int New excerpt length.
+ */
+
+function custom_excerpt_length( $length ) {
+    return 25; // number of words. Default is 55.
+}
+
+
+// Call back Functions for Oxygen Builder Query Loop
+function trim_post_title( $limit ) {
+return wp_trim_words(get_the_title(), $limit );
+}
+
+function trim_post_excerpt( $limit ) {
+return wp_trim_words(get_the_excerpt(), $limit, '' );
+}
